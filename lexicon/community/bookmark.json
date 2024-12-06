@@ -11,7 +11,12 @@
           "required": ["subject", "createdAt"],
           "properties": {
             "subject": { "type": "string", "format": "uri" },
-            "createdAt": { "type": "string", "format": "datetime" }
+            "createdAt": { "type": "string", "format": "datetime" },
+            "tags": {
+                "type": "array",
+                "description": "Tags for content the bookmark may be related to, for example 'news' or 'funny videos'",
+                "items": { "type": "string" }
+            }
           }
         }
       }
