@@ -1,0 +1,23 @@
+{
+    "lexicon": 1,
+    "id": "community.lexicon.attestation.signed",
+    "defs": {
+        "main": {
+            "type": "record",
+            "description": "A signed record",
+            "key": "tid",
+            "record": {
+                "type": "object",
+                "properties": {
+                    "signatures": {
+                        "type": "ref",
+                        "ref": "community.lexicon.attestation.defs#signatures"
+                    }
+                },
+                "required": [
+                    "signatures"
+                ]
+            }
+        }
+    }
+}
