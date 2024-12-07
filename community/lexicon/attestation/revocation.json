@@ -1,0 +1,25 @@
+{
+    "lexicon": 1,
+    "id": "community.lexicon.attestation.revocation",
+    "defs": {
+        "main": {
+            "type": "record",
+            "description": "A record of revocation of a signature.",
+            "key": "tid",
+            "record": {
+                "type": "object",
+                "properties": {
+                    "revoked": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "revoked"
+                ]
+            }
+        }
+    }
+}
