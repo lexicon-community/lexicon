@@ -7,14 +7,7 @@
       "description": "Get a list of bookmarks by actor. Optionally add a list of tags to include, default will be all bookmarks. Requires auth, actor must be the requesting account.",
       "parameters": {
         "type": "params",
-        "required": [
-          "actor"
-        ],
         "properties": {
-          "actor": {
-            "type": "string",
-            "format": "at-identifier"
-          },
           "tags": {
             "type": "array",
             "items": {
@@ -47,20 +40,12 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "community.lexicon.bookmarks.bookmark#main"
+                "ref": "community.lexicon.bookmarks.bookmark"
               }
             }
           }
         }
-      },
-      "errors": [
-        {
-          "name": "BlockedActor"
-        },
-        {
-          "name": "BlockedByActor"
-        }
-      ]
+      }
     }
   }
 }
