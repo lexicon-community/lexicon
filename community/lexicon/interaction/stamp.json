@@ -1,0 +1,35 @@
+{
+    "lexicon": 1,
+    "id": "community.lexicon.interaction.stamp",
+    "defs": {
+        "main": {
+            "type": "record",
+            "description": "An interaction with another AT Protocol record.",
+            "key": "tid",
+            "record": {
+                "type": "object",
+                "required": [
+                    "subject",
+                    "createdAt",
+                    "stamp"
+                ],
+                "properties": {
+                    "subject": {
+                        "type": "ref",
+                        "ref": "com.atproto.repo.strongRef"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "datetime"
+                    },
+                    "stamp": {
+                        "type": "string",
+                        "knownValues": [
+                            "community.lexicon.interaction.defs#like"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
