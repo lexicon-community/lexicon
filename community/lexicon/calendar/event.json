@@ -1,0 +1,137 @@
+{
+    "lexicon": 1,
+    "id": "community.lexicon.calendar.event",
+    "defs": {
+        "main": {
+            "type": "record",
+            "description": "Record containing a calendar event.",
+            "key": "tid",
+            "record": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "text",
+                    "createdAt"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "maxLength": 100,
+                        "description": "The name of the event."
+                    },
+                    "text": {
+                        "type": "string",
+                        "maxLength": 3000,
+                        "description": "The event description and content for the event."
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "datetime",
+                        "description": "Client-declared timestamp when this event was originally created."
+                    },
+                    "startsAt": {
+                        "type": "string",
+                        "format": "datetime",
+                        "description": "Client-declared timestamp when this event starts."
+                    },
+                    "endsAt": {
+                        "type": "string",
+                        "format": "datetime",
+                        "description": "Client-declared timestamp when this event ends."
+                    },
+                    "mode": {
+                        "type": "ref",
+                        "ref": "community.lexicon.calendar.event#mode",
+                        "description": "The attendance mode of the event."
+                    },
+                    "status": {
+                        "type": "ref",
+                        "ref": "community.lexicon.calendar.event#status",
+                        "description": "The status of the event."
+                    },
+                    "locations": {
+                        "type": "array",
+                        "description": "The locations where the event takes place.",
+                        "items": {
+                            "type": "union",
+                            "refs": [
+                                "community.lexicon.locations.place#main",
+                                "community.lexicon.locations.h3#main",
+                                "community.lexicon.locations.geo#main",
+                                "community.lexicon.locations.fsq#main",
+                                "community.lexicon.calendar.event#virtualLocation"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "mode": {
+            "type": "string",
+            "description": "The mode of the event.",
+            "default": "community.lexicon.calendar.event#inperson",
+            "knownValues": [
+                "community.lexicon.calendar.event#virtual",
+                "community.lexicon.calendar.event#inperson",
+                "community.lexicon.calendar.event#hybrid"
+            ]
+        },
+        "virtual": {
+            "type": "token",
+            "description": "A virtual event that takes place online."
+        },
+        "inperson": {
+            "type": "token",
+            "description": "An in-person event that takes place offline."
+        },
+        "hybrid": {
+            "type": "token",
+            "description": "A hybrid event that takes place both online and offline."
+        },
+        "status": {
+            "type": "string",
+            "description": "The status of the event.",
+            "default": "community.lexicon.calendar.event#scheduled",
+            "knownValues": [
+                "community.lexicon.calendar.event#scheduled",
+                "community.lexicon.calendar.event#rescheduled",
+                "community.lexicon.calendar.event#cancelled",
+                "community.lexicon.calendar.event#postponed"
+            ]
+        },
+        "scheduled": {
+            "type": "token",
+            "description": "The event has been created and scheduled."
+        },
+        "rescheduled": {
+            "type": "token",
+            "description": "The event has been rescheduled."
+        },
+        "cancelled": {
+            "type": "token",
+            "description": "The event has been cancelled."
+        },
+        "postponed": {
+            "type": "token",
+            "description": "The event has been postponed and a new start date has not been set."
+        },
+        "virtualLocation": {
+            "type": "object",
+            "description": "A virtual location in the form of a uri.",
+            "required": [
+                "url"
+            ],
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "The URL of the virtual location."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The title of the URL."
+                }
+            }
+        }
+    }
+}
