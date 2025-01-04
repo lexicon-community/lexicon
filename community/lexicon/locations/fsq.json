@@ -6,10 +6,7 @@
             "type": "object",
             "description": "A physical location contained in the Foursquare Open Source Places dataset.",
             "required": [
-                "fsq_place_id",
-                "name",
-                "latitude",
-                "longitude"
+                "fsq_place_id"
             ],
             "properties": {
                 "fsq_place_id": {

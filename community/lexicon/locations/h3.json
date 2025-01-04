@@ -4,7 +4,7 @@
     "defs": {
         "main": {
             "type": "object",
-            "description": "A physical location in the form of a h3 encoded location.",
+            "description": "A physical location in the form of a H3 encoded location.",
             "required": [
                 "value"
             ],

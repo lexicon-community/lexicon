@@ -55,10 +55,10 @@
                         "items": {
                             "type": "union",
                             "refs": [
-                                "community.lexicon.locations.place#main",
-                                "community.lexicon.locations.h3#main",
-                                "community.lexicon.locations.geo#main",
-                                "community.lexicon.locations.fsq#main",
+                                "community.lexicon.locations.address",
+                                "community.lexicon.locations.h3",
+                                "community.lexicon.locations.geo",
+                                "community.lexicon.locations.fsq",
                                 "community.lexicon.calendar.event#virtualLocation"
                             ]
                         }
@@ -119,10 +119,10 @@
             "type": "object",
             "description": "A virtual location in the form of a uri.",
             "required": [
-                "url"
+                "uri"
             ],
             "properties": {
-                "url": {
+                "uri": {
                     "type": "string",
                     "format": "uri",
                     "description": "The URL of the virtual location."
