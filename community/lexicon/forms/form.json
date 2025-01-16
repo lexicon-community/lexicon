@@ -31,10 +31,10 @@
           },
           "questions": {
             "type": "array",
-            "description": "The locations where the event takes place.",
+            "description": "The questions in the form.",
             "items": {
               "type": "ref",
-              "ref": "community.lexicon.forms.question"
+              "ref": "com.atproto.repo.strongRef"
             }
           }
         }

@@ -10,44 +10,27 @@
         "type": "object",
         "required": [
           "subject",
+          "createdAt",
           "answers"
         ],
         "properties": {
           "subject": {
             "type": "ref",
-            "ref": "community.lexicon.forms.form#main",
+            "ref": "com.atproto.repo.strongRef",
             "description": "The form the response is to."
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Client-declared timestamp when this event was originally created."
           },
           "answers": {
             "type": "array",
             "description": "The answers to the questions in the form.",
             "items": {
               "type": "ref",
-              "ref": "community.lexicon.forms.response#questionanswer"
+              "ref": "community.lexicon.forms.answer.defs#main"
             }
-          }
-        }
-      }
-    },
-    "questionanswer": {
-      "type": "object",
-      "description": "An answer to a specific question in a form.",
-      "required": [
-          "subject",
-          "values"
-      ],
-      "properties": {
-        "subject": {
-          "type": "ref",
-          "ref": "community.lexicon.forms.question#main",
-          "description": "The question this answer is to."
-        },
-        "values": {
-          "type": "array",
-          "description": "The values of the response. For text or multiple choiced based question, length will be one.",
-          "items": {
-            "type": "string",
-            "maxLength": 5000
           }
         }
       }
