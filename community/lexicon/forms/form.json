@@ -1,0 +1,38 @@
+{
+    "lexicon": 1,
+    "id": "community.lexicon.forms.form",
+    "defs": {
+        "main": {
+            "type": "record",
+            "description": "Record declaring an form with questions.",
+            "key": "tid",
+            "record": {
+                "type": "object",
+                "required": [
+                    "title",
+                    "questions"
+                ],
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "maxLength": 100,
+                        "description": "The title of the form."
+                    },
+                    "description": {
+                        "type": "string",
+                        "maxLength": 2000,
+                        "description": "Description of the form."
+                    },
+                    "questions": {
+                        "type": "array",
+                        "description": "The locations where the event takes place.",
+                        "items": {
+                            "type": "ref",
+                            "ref": "community.lexicon.forms.question"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
