@@ -35,6 +35,11 @@
               "type": "ref",
               "ref": "community.lexicon.forms.question#questionoption"
             }
+          },
+          "required": {
+            "type": "boolean",
+            "description": "Indicates if this question must be answered.",
+            "default": false
           }
         }
       }
@@ -60,9 +65,9 @@
           "type": "string",
           "description": "The text of the option."
         },
-        "image": {
+        "media": {
             "type": "blob",
-            "description": "Optional: A URL to an image representing the option.",
+            "description": "Optional: A URL to an image representing or complimenting the option.",
             "accept": ["image/png", "image/jpeg"],
             "maxSize": 1000000
           }

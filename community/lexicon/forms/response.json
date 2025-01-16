@@ -1,0 +1,56 @@
+{
+  "lexicon": 1,
+  "id": "community.lexicon.forms.response",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "Record declaring a response to a form.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": [
+          "subject",
+          "answers"
+        ],
+        "properties": {
+          "subject": {
+            "type": "ref",
+            "ref": "community.lexicon.forms.form#main",
+            "description": "The form the response is to."
+          },
+          "answers": {
+            "type": "array",
+            "description": "The answers to the questions in the form.",
+            "items": {
+              "type": "ref",
+              "ref": "community.lexicon.forms.response#questionanswer"
+            }
+          }
+        }
+      }
+    },
+    "questionanswer": {
+      "type": "object",
+      "description": "An answer to a specific question in a form.",
+      "required": [
+          "subject",
+          "values"
+      ],
+      "properties": {
+        "subject": {
+          "type": "ref",
+          "ref": "community.lexicon.forms.question#main",
+          "description": "The question this answer is to."
+        },
+        "values": {
+          "type": "array",
+          "description": "The values of the response. For text or multiple choiced based question, length will be one.",
+          "items": {
+            "type": "string",
+            "maxLength": 5000
+          }
+        }
+      }
+    }
+  }
+}
