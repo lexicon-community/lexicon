@@ -1,0 +1,84 @@
+{
+  "lexicon": 1,
+  "id": "community.lexicon.forms.question",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "Record declaring a question in a form.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": [
+          "title",
+          "questiontype"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 100,
+            "description": "The title of the question."
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 2000,
+            "description": "Description of the question."
+          },
+          "questiontype": {
+            "type": "ref",
+            "ref": "community.lexicon.forms.question#questiontype",
+            "description": "The type of question."
+          },
+          "questionoptions": {
+            "type": "array",
+            "description": "The options for a question with multiple answers.",
+            "items": {
+              "type": "ref",
+              "ref": "community.lexicon.forms.question#questionoption"
+            }
+          }
+        }
+      }
+    },
+    "questiontype": {
+      "type": "string",
+      "description": "The type the question.",
+      "default": "community.lexicon.forms.question#text",
+      "knownValues": [
+        "community.lexicon.forms.question#text",
+        "community.lexicon.forms.question#multiplechoice",
+        "community.lexicon.calendar.event#selectmany"
+      ]
+    },
+    "questionoption": {
+      "type": "object",
+      "description": "A single option for a multiple-choice question.",
+      "required": [
+          "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The text of the option."
+        },
+        "image": {
+            "type": "blob",
+            "description": "Optional: A URL to an image representing the option.",
+            "accept": ["image/png", "image/jpeg"],
+            "maxSize": 1000000
+          }
+      }
+    },
+    "text": {
+      "type": "token",
+      "description": "A text based question."
+    },
+    "multiplechoice": {
+      "type": "token",
+      "description": "A multiple choice based question."
+    },
+    "selectmany": {
+      "type": "token",
+      "description": "A multiple selection based question."
+    }
+  }
+}
