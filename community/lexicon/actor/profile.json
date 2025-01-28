@@ -1,0 +1,97 @@
+{
+  "lexicon": 1,
+  "id": "community.lexicon.actor.profile",
+  "description": "Extended profile information for AT Protocol actors",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "An extended profile record.",
+      "key": "literal:self",
+      "record": {
+        "type": "object",
+        "required": [
+          "displayName",
+          "createdAt"
+        ],
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "maxGraphemes": 64,
+            "maxLength": 640
+          },
+          "description": {
+            "type": "string",
+            "description": "Free-form profile description text.",
+            "maxGraphemes": 256,
+            "maxLength": 2560
+          },
+          "avatar": {
+            "type": "blob",
+            "description": "Profile image",
+            "accept": [
+              "image/png",
+              "image/jpeg"
+            ],
+            "maxSize": 1000000
+          },
+          "banner": {
+            "type": "blob",
+            "description": "Banner image",
+            "accept": [
+              "image/png",
+              "image/jpeg"
+            ],
+            "maxSize": 1000000
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 255
+          },
+          "phone": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "International format phone number"
+          },
+          "address": {
+            "type": "ref",
+            "ref": "community.lexicon.locations.address"
+          },
+          "links": {
+            "type": "array",
+            "description": "Collection of related links for the profile",
+            "items": {
+              "type": "object",
+              "required": [
+                "url",
+                "type"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "maxLength": 2048
+                },
+                "type": {
+                  "type": "string",
+                  "description": "The type of link (e.g., website, twitter, instagram)",
+                  "maxLength": 50
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Optional display title for the link",
+                  "maxLength": 100
+                }
+              }
+            },
+            "maxLength": 10
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          }
+        }
+      }
+    }
+  }
+}
