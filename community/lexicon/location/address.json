@@ -4,7 +4,7 @@
     "defs": {
         "main": {
             "type": "object",
-            "description": "A physical location in the form of an address.",
+            "description": "A physical location in the form of a street address.",
             "required": [
                 "country"
             ],
@@ -17,8 +17,7 @@
                 },
                 "postalCode": {
                     "type": "string",
-                    "description": "The postal code of the location.",
-                    "maxLength": 20
+                    "description": "The postal code of the location."
                 },
                 "region": {
                     "type": "string",
@@ -34,7 +33,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the place."
+                    "description": "The name of the location."
                 }
             }
         }

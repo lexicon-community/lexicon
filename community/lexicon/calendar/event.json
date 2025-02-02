@@ -4,7 +4,7 @@
     "defs": {
         "main": {
             "type": "record",
-            "description": "A calendar event record.",
+            "description": "A calendar event.",
             "key": "tid",
             "record": {
                 "type": "object",
@@ -19,22 +19,22 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "The event description and content for the event."
+                        "description": "The description of the event."
                     },
                     "createdAt": {
                         "type": "string",
                         "format": "datetime",
-                        "description": "Client-declared timestamp when this event was originally created."
+                        "description": "Client-declared timestamp when the event was created."
                     },
                     "startsAt": {
                         "type": "string",
                         "format": "datetime",
-                        "description": "Client-declared timestamp when this event starts."
+                        "description": "Client-declared timestamp when the event starts."
                     },
                     "endsAt": {
                         "type": "string",
                         "format": "datetime",
-                        "description": "Client-declared timestamp when this event ends."
+                        "description": "Client-declared timestamp when the event ends."
                     },
                     "mode": {
                         "type": "ref",
@@ -62,7 +62,7 @@
                     },
                     "uris": {
                         "type": "array",
-                        "description": "Zero or more URIs associated with the event",
+                        "description": "URIs associated with the event.",
                         "items": {
                             "type": "ref",
                             "ref": "community.lexicon.calendar.event#uri"
@@ -107,7 +107,7 @@
         },
         "planned": {
             "type": "token",
-            "description": "The event has been created but not scheduled."
+            "description": "The event has been created, but not finalized."
         },
         "scheduled": {
             "type": "token",
@@ -138,7 +138,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The display name of the URL."
+                    "description": "The display name of the URI."
                 }
             }
         }
