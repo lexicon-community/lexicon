@@ -53,10 +53,10 @@
                             "type": "union",
                             "refs": [
                                 "community.lexicon.calendar.event#uri",
-                                "community.lexicon.locations.address",
-                                "community.lexicon.locations.fsq",
-                                "community.lexicon.locations.geo",
-                                "community.lexicon.locations.h3"
+                                "community.lexicon.location.address",
+                                "community.lexicon.location.fsq",
+                                "community.lexicon.location.geo",
+                                "community.lexicon.location.h3"
                             ]
                         }
                     },
