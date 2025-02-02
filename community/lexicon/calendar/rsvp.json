@@ -19,11 +19,11 @@
                     },
                     "status": {
                         "type": "string",
-                        "default": "#interested",
+                        "default": "community.lexicon.calendar.rsvp#going",
                         "knownValues": [
-                            "#interested",
-                            "#going",
-                            "#notgoing"
+                            "community.lexicon.calendar.rsvp#interested",
+                            "community.lexicon.calendar.rsvp#going",
+                            "community.lexicon.calendar.rsvp#notgoing"
                         ]
                     }
                 }

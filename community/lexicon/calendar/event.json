@@ -65,7 +65,7 @@
                         "description": "Zero or more URIs associated with the event",
                         "items": {
                             "type": "ref",
-                            "ref": "#uri"
+                            "ref": "community.lexicon.calendar.event#uri"
                         }
                     }
                 }
@@ -74,11 +74,11 @@
         "mode": {
             "type": "string",
             "description": "The mode of the event.",
-            "default": "#inperson",
+            "default": "community.lexicon.calendar.event#inperson",
             "knownValues": [
-                "#hybrid",
-                "#inperson",
-                "#virtual"
+                "community.lexicon.calendar.event#hybrid",
+                "community.lexicon.calendar.event#inperson",
+                "community.lexicon.calendar.event#virtual"
             ]
         },
         "virtual": {
@@ -96,13 +96,13 @@
         "status": {
             "type": "string",
             "description": "The status of the event.",
-            "default": "#scheduled",
+            "default": "community.lexicon.calendar.event#scheduled",
             "knownValues": [
-                "#cancelled",
-                "#planned",
-                "#postponed",
-                "#rescheduled",
-                "#scheduled"
+                "community.lexicon.calendar.event#cancelled",
+                "community.lexicon.calendar.event#planned",
+                "community.lexicon.calendar.event#postponed",
+                "community.lexicon.calendar.event#rescheduled",
+                "community.lexicon.calendar.event#scheduled"
             ]
         },
         "planned": {
