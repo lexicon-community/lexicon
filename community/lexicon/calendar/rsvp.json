@@ -15,15 +15,15 @@
                 "properties": {
                     "subject": {
                         "type": "ref",
-                        "ref": "com.atproto.repo.strongRef#main"
+                        "ref": "com.atproto.repo.strongRef"
                     },
                     "status": {
                         "type": "string",
-                        "default": "community.lexicon.calendar.rsvp#interested",
+                        "default": "#interested",
                         "knownValues": [
-                            "community.lexicon.calendar.rsvp#interested",
-                            "community.lexicon.calendar.rsvp#going",
-                            "community.lexicon.calendar.rsvp#notgoing"
+                            "#interested",
+                            "#going",
+                            "#notgoing"
                         ]
                     }
                 }

@@ -22,23 +22,19 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The administrative region of the country. For example, a state in the USA.",
-                    "maxLength": 100
+                    "description": "The administrative region of the country. For example, a state in the USA."
                 },
                 "locality": {
                     "type": "string",
-                    "description": "The locality of the region. For example, a city in the USA.",
-                    "maxLength": 100
+                    "description": "The locality of the region. For example, a city in the USA."
                 },
                 "street": {
                     "type": "string",
-                    "description": "The street address.",
-                    "maxLength": 100
+                    "description": "The street address."
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the place.",
-                    "maxLength": 100
+                    "description": "The name of the place."
                 }
             }
         }

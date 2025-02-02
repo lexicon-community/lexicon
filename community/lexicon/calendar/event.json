@@ -4,24 +4,21 @@
     "defs": {
         "main": {
             "type": "record",
-            "description": "Record containing a calendar event.",
+            "description": "A calendar event record.",
             "key": "tid",
             "record": {
                 "type": "object",
                 "required": [
-                    "name",
-                    "text",
-                    "createdAt"
+                    "createdAt",
+                    "name"
                 ],
                 "properties": {
                     "name": {
                         "type": "string",
-                        "maxLength": 100,
                         "description": "The name of the event."
                     },
-                    "text": {
+                    "description": {
                         "type": "string",
-                        "maxLength": 3000,
                         "description": "The event description and content for the event."
                     },
                     "createdAt": {
@@ -55,12 +52,20 @@
                         "items": {
                             "type": "union",
                             "refs": [
+                                "community.lexicon.calendar.event#uri",
                                 "community.lexicon.locations.address",
-                                "community.lexicon.locations.h3",
-                                "community.lexicon.locations.geo",
                                 "community.lexicon.locations.fsq",
-                                "community.lexicon.calendar.event#virtualLocation"
+                                "community.lexicon.locations.geo",
+                                "community.lexicon.locations.h3"
                             ]
+                        }
+                    },
+                    "uris": {
+                        "type": "array",
+                        "description": "Zero or more URIs associated with the event",
+                        "items": {
+                            "type": "ref",
+                            "ref": "#uri"
                         }
                     }
                 }
@@ -69,11 +74,11 @@
         "mode": {
             "type": "string",
             "description": "The mode of the event.",
-            "default": "community.lexicon.calendar.event#inperson",
+            "default": "#inperson",
             "knownValues": [
-                "community.lexicon.calendar.event#virtual",
-                "community.lexicon.calendar.event#inperson",
-                "community.lexicon.calendar.event#hybrid"
+                "#hybrid",
+                "#inperson",
+                "#virtual"
             ]
         },
         "virtual": {
@@ -91,13 +96,18 @@
         "status": {
             "type": "string",
             "description": "The status of the event.",
-            "default": "community.lexicon.calendar.event#scheduled",
+            "default": "#scheduled",
             "knownValues": [
-                "community.lexicon.calendar.event#scheduled",
-                "community.lexicon.calendar.event#rescheduled",
-                "community.lexicon.calendar.event#cancelled",
-                "community.lexicon.calendar.event#postponed"
+                "#cancelled",
+                "#planned",
+                "#postponed",
+                "#rescheduled",
+                "#scheduled"
             ]
+        },
+        "planned": {
+            "type": "token",
+            "description": "The event has been created but not scheduled."
         },
         "scheduled": {
             "type": "token",
@@ -115,21 +125,20 @@
             "type": "token",
             "description": "The event has been postponed and a new start date has not been set."
         },
-        "virtualLocation": {
+        "uri": {
             "type": "object",
-            "description": "A virtual location in the form of a uri.",
+            "description": "A URI associated with the event.",
             "required": [
                 "uri"
             ],
             "properties": {
                 "uri": {
                     "type": "string",
-                    "format": "uri",
-                    "description": "The URL of the virtual location."
+                    "format": "uri"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The title of the URL."
+                    "description": "The display name of the URL."
                 }
             }
         }
