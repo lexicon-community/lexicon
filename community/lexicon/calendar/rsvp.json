@@ -4,7 +4,7 @@
     "defs": {
         "main": {
             "type": "record",
-            "description": "Record declaring an RSVP for an event.",
+            "description": "An RSVP for an event.",
             "key": "tid",
             "record": {
                 "type": "object",
