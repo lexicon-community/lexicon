@@ -1,0 +1,30 @@
+{
+  "lexicon": 1,
+  "id": "community.lexicon.web.link",
+  "description": "A lexicon for standardized web link handling and categorization",
+  "defs": {
+    "main": {
+      "type": "object",
+      "description": "A web link with metadata and categorization",
+      "required": ["url"],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL of the link",
+          "maxLength": 2048
+        },
+        "title": {
+          "type": "string",
+          "description": "Display title for the link",
+          "maxLength": 100
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional description of the link",
+          "maxLength": 500
+        }
+      }
+    }
+  }
+}

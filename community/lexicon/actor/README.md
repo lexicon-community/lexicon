@@ -6,7 +6,7 @@ Identity and profile-related lexicons for the AT Protocol.
 
 ### community.lexicon.actor.profile
 
-This lexicon provides extended profile information. It adds structured data for contact information, location, and categorized links.
+This lexicon provides extended profile information. It adds structured data for contact information, location, and links.
 
 ```json
 {
@@ -14,7 +14,9 @@ This lexicon provides extended profile information. It adds structured data for 
   "displayName": "Downtown Coffee Co.",
   "description": "Artisanal coffee roasters and café in downtown Portland. Sourcing single-origin beans since 2015.",
   "email": "hello@downtowncoffee.com",
-  "phone": "+1-503-555-0123",
+  "phone": {
+    "number": "+15035550123"
+  },
   "address": {
     "name": "Downtown Coffee Co.",
     "street": "123 SW Park Ave",
@@ -25,17 +27,14 @@ This lexicon provides extended profile information. It adds structured data for 
   },
   "links": [
     {
-      "type": "website",
-      "url": "https://downtowncoffee.com"
+      "url": "https://downtowncoffee.com",
+      "title": "Official Website",
+      "description": "Visit our website for our full menu, locations, and online ordering"
     },
     {
-      "type": "instagram",
-      "url": "https://instagram.com/downtowncoffee"
-    },
-    {
-      "type": "menu",
-      "url": "https://downtowncoffee.com/menu",
-      "title": "View Our Menu"
+      "url": "https://instagram.com/downtowncoffee",
+      "title": "Follow us on Instagram",
+      "description": "Daily coffee photos and café updates"
     }
   ],
   "createdAt": "2025-01-28T15:32:20.417Z"

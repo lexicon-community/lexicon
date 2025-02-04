@@ -1,0 +1,36 @@
+{
+  "lexicon": 1,
+  "id": "community.lexicon.contact.phone",
+  "description": "A lexicon for standardized phone number handling",
+  "defs": {
+    "main": {
+      "type": "object",
+      "description": "A phone number with standardized formatting and metadata",
+      "required": ["number"],
+      "properties": {
+        "number": {
+          "type": "string",
+          "description": "The phone number in E.164 format (e.g., +14155552671)",
+          "maxLength": 15,
+          "pattern": "^\\+[1-9]\\d{1,14}$"
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of phone number",
+          "enum": ["mobile", "home", "work", "fax", "other"]
+        },
+        "label": {
+          "type": "string",
+          "description": "Optional custom label for the phone number",
+          "maxLength": 50
+        },
+        "countryCode": {
+          "type": "string",
+          "description": "ISO 3166-1 alpha-2 country code for the phone number",
+          "pattern": "^[A-Z]{2}$",
+          "maxLength": 2
+        }
+      }
+    }
+  }
+}

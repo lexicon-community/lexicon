@@ -49,9 +49,8 @@
             "maxLength": 255
           },
           "phone": {
-            "type": "string",
-            "maxLength": 20,
-            "description": "International format phone number"
+            "type": "ref",
+            "ref": "community.lexicon.contact.phone"
           },
           "address": {
             "type": "ref",
@@ -61,28 +60,8 @@
             "type": "array",
             "description": "Collection of related links for the profile",
             "items": {
-              "type": "object",
-              "required": [
-                "url",
-                "type"
-              ],
-              "properties": {
-                "url": {
-                  "type": "string",
-                  "format": "uri",
-                  "maxLength": 2048
-                },
-                "type": {
-                  "type": "string",
-                  "description": "The type of link (e.g., website, twitter, instagram)",
-                  "maxLength": 50
-                },
-                "title": {
-                  "type": "string",
-                  "description": "Optional display title for the link",
-                  "maxLength": 100
-                }
-              }
+              "type": "ref",
+              "ref": "community.lexicon.web.link"
             },
             "maxLength": 10
           },
