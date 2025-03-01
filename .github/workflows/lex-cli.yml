@@ -26,5 +26,5 @@ jobs:
         run: |
           lex gen-api --yes tmp ./community/lexicon/*/*.json > >(tee -a lex-gen-api-stdout.txt) 2> >(tee -a lex-gen-api-stderr.txt >&2)
           if [ -s "lex-gen-api-stderr.txt" ]; then
-            echo "::error"
+            exit 1
           fi
