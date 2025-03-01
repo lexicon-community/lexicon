@@ -1,0 +1,30 @@
+name: Run lex-cli
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  run-lex-cli:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install lex-cli
+        run: npm install -g @atproto/lex-cli
+
+      - name: Generate API from lexicon schemas
+        run: |
+          lex gen-api --yes tmp ./community/lexicon/*/*.json > >(tee -a lex-gen-api-stdout.txt) 2> >(tee -a lex-gen-api-stderr.txt >&2)
+          if [ -s "lex-gen-api-stderr.txt" ]; then
+            exit 1
+          fi
