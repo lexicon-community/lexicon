@@ -3,7 +3,7 @@
     "id": "community.lexicon.location.hthree",
     "defs": {
         "main": {
-            "type": "object",
+            "type": "smobject",
             "description": "A physical location in the form of a H3 encoded location.",
             "required": [
                 "value"
