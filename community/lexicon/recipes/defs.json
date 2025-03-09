@@ -1,0 +1,343 @@
+{
+  "lexicon": 1,
+  "id": "community.lexicon.recipes.defs",
+  "description": "Shared definitions for the recipe Lexicon, including cooking methods, dietary restrictions, categories, cuisines, attribution types, publication types, and licenses.",
+  "defs": {
+    "attributionTypeOriginal": {
+      "type": "token",
+      "description": "Original recipe created by the author."
+    },
+    "attributionTypePerson": {
+      "type": "token",
+      "description": "Recipe shared by a specific person, such as family or friend."
+    },
+    "attributionTypePublication": {
+      "type": "token",
+      "description": "Recipe from a published source like a book or magazine."
+    },
+    "attributionTypeWebsite": {
+      "type": "token",
+      "description": "Recipe from a website or blog."
+    },
+    "attributionTypeShow": {
+      "type": "token",
+      "description": "Recipe from a TV show, streaming content, or video."
+    },
+    "attributionTypeProduct": {
+      "type": "token",
+      "description": "Recipe from a product package or label."
+    },
+    "categoryAppetizer": {
+      "type": "token",
+      "description": "A small dish served before a main meal."
+    },
+    "categoryBeverage": {
+      "type": "token",
+      "description": "Drinkable recipes including both alcoholic and non-alcoholic beverages."
+    },
+    "categoryBreakfast": {
+      "type": "token",
+      "description": "Dishes typically served in the morning."
+    },
+    "categoryBrunch": {
+      "type": "token",
+      "description": "Dishes suitable for late morning/early afternoon meals."
+    },
+    "categoryCocktail": {
+      "type": "token",
+      "description": "Alcoholic mixed drink recipes."
+    },
+    "categoryDessert": {
+      "type": "token",
+      "description": "Sweet dishes typically served after a main meal."
+    },
+    "categoryDinner": {
+      "type": "token",
+      "description": "Main dishes typically served in the evening."
+    },
+    "categoryEntree": {
+      "type": "token",
+      "description": "Main course dishes."
+    },
+    "categoryGarnish": {
+      "type": "token",
+      "description": "Decorative or flavorful additions to other dishes."
+    },
+    "categoryKidFriendly": {
+      "type": "token",
+      "description": "Recipes suitable for children."
+    },
+    "categoryLunch": {
+      "type": "token",
+      "description": "Dishes typically served midday."
+    },
+    "categorySalad": {
+      "type": "token",
+      "description": "Cold dishes primarily composed of mixed ingredients."
+    },
+    "categorySide": {
+      "type": "token",
+      "description": "Dishes meant to accompany main courses."
+    },
+    "categorySnack": {
+      "type": "token",
+      "description": "Small portions meant to be eaten between meals."
+    },
+    "categorySoup": {
+      "type": "token",
+      "description": "Liquid food served hot or cold."
+    },
+    "cookingMethodAirFrying": {
+      "type": "token",
+      "description": "Cooking food using hot air circulation in an air fryer."
+    },
+    "cookingMethodBaking": {
+      "type": "token",
+      "description": "Cooking food by exposing it to dry heat in an oven or similar environment."
+    },
+    "cookingMethodBroiling": {
+      "type": "token",
+      "description": "Cooking food directly under high heat."
+    },
+    "cookingMethodGrilling": {
+      "type": "token",
+      "description": "Cooking food on a grill or griddle with direct heat."
+    },
+    "cookingMethodFrying": {
+      "type": "token",
+      "description": "Cooking food in hot oil or fat."
+    },
+    "cookingMethodRoasting": {
+      "type": "token",
+      "description": "Cooking food by exposing it to dry heat with hot air circulating around it."
+    },
+    "cookingMethodSauteing": {
+      "type": "token",
+      "description": "Cooking food quickly in a small amount of fat over high heat."
+    },
+    "cookingMethodSteaming": {
+      "type": "token",
+      "description": "Cooking food using steam from boiling water."
+    },
+    "cookingMethodSlowCooking": {
+      "type": "token",
+      "description": "Cooking food at low temperatures for extended periods."
+    },
+    "cookingMethodPressureCooking": {
+      "type": "token",
+      "description": "Cooking food using pressure and steam in a sealed vessel."
+    },
+    "cookingMethodNoCook": {
+      "type": "token",
+      "description": "Recipe requires no cooking or heat application."
+    },
+    "cuisineAfrican": {
+      "type": "token",
+      "description": "Dishes from African culinary traditions."
+    },
+    "cuisineAmerican": {
+      "type": "token",
+      "description": "Dishes from United States culinary traditions."
+    },
+    "cuisineAustralian": {
+      "type": "token",
+      "description": "Dishes from Australian culinary traditions."
+    },
+    "cuisineBrazilian": {
+      "type": "token",
+      "description": "Dishes from Brazilian culinary traditions."
+    },
+    "cuisineBritish": {
+      "type": "token",
+      "description": "Dishes from British culinary traditions."
+    },
+    "cuisineCaribbean": {
+      "type": "token",
+      "description": "Dishes from Caribbean culinary traditions."
+    },
+    "cuisineChinese": {
+      "type": "token",
+      "description": "Dishes from Chinese culinary traditions."
+    },
+    "cuisineCreole": {
+      "type": "token",
+      "description": "Dishes from Creole culinary traditions."
+    },
+    "cuisineEuropean": {
+      "type": "token",
+      "description": "Dishes from European culinary traditions."
+    },
+    "cuisineFrench": {
+      "type": "token",
+      "description": "Dishes from French culinary traditions."
+    },
+    "cuisineGerman": {
+      "type": "token",
+      "description": "Dishes from German culinary traditions."
+    },
+    "cuisineGreek": {
+      "type": "token",
+      "description": "Dishes from Greek culinary traditions."
+    },
+    "cuisineIndian": {
+      "type": "token",
+      "description": "Dishes from Indian culinary traditions."
+    },
+    "cuisineIndonesian": {
+      "type": "token",
+      "description": "Dishes from Indonesian culinary traditions."
+    },
+    "cuisineItalian": {
+      "type": "token",
+      "description": "Dishes from Italian culinary traditions."
+    },
+    "cuisineJapanese": {
+      "type": "token",
+      "description": "Dishes from Japanese culinary traditions."
+    },
+    "cuisineKorean": {
+      "type": "token",
+      "description": "Dishes from Korean culinary traditions."
+    },
+    "cuisineLebanese": {
+      "type": "token",
+      "description": "Dishes from Lebanese culinary traditions."
+    },
+    "cuisineMediterranean": {
+      "type": "token",
+      "description": "Dishes from Mediterranean culinary traditions."
+    },
+    "cuisineMexican": {
+      "type": "token",
+      "description": "Dishes from Mexican culinary traditions."
+    },
+    "cuisineMiddleEastern": {
+      "type": "token",
+      "description": "Dishes from Middle Eastern culinary traditions."
+    },
+    "cuisineMoroccan": {
+      "type": "token",
+      "description": "Dishes from Moroccan culinary traditions."
+    },
+    "cuisinePeruvian": {
+      "type": "token",
+      "description": "Dishes from Peruvian culinary traditions."
+    },
+    "cuisinePolish": {
+      "type": "token",
+      "description": "Dishes from Polish culinary traditions."
+    },
+    "cuisinePortuguese": {
+      "type": "token",
+      "description": "Dishes from Portuguese culinary traditions."
+    },
+    "cuisineRussian": {
+      "type": "token",
+      "description": "Dishes from Russian culinary traditions."
+    },
+    "cuisineSpanish": {
+      "type": "token",
+      "description": "Dishes from Spanish culinary traditions."
+    },
+    "cuisineSouthern": {
+      "type": "token",
+      "description": "Dishes from Southern United States culinary traditions."
+    },
+    "cuisineTexan": {
+      "type": "token",
+      "description": "Dishes from Texan culinary traditions."
+    },
+    "cuisineTexMex": {
+      "type": "token",
+      "description": "Dishes combining Texan and Mexican culinary traditions."
+    },
+    "cuisineThai": {
+      "type": "token",
+      "description": "Dishes from Thai culinary traditions."
+    },
+    "cuisineTurkish": {
+      "type": "token",
+      "description": "Dishes from Turkish culinary traditions."
+    },
+    "cuisineVietnamese": {
+      "type": "token",
+      "description": "Dishes from Vietnamese culinary traditions."
+    },
+    "dietLowFat": {
+      "type": "token",
+      "description": "Recipe suitable for diets restricting fat intake."
+    },
+    "dietLowCalorie": {
+      "type": "token",
+      "description": "Recipe suitable for calorie-restricted diets."
+    },
+    "dietLowCarb": {
+      "type": "token",
+      "description": "Recipe suitable for diets restricting carbohydrate intake."
+    },
+    "dietVegetarian": {
+      "type": "token",
+      "description": "Recipe contains no meat or fish but may contain animal products like eggs and dairy."
+    },
+    "dietVegan": {
+      "type": "token",
+      "description": "Recipe contains no animal products whatsoever."
+    },
+    "dietGlutenFree": {
+      "type": "token",
+      "description": "Recipe contains no gluten-containing ingredients."
+    },
+    "dietDiabetic": {
+      "type": "token",
+      "description": "Recipe suitable for diabetic dietary requirements."
+    },
+    "dietHalal": {
+      "type": "token",
+      "description": "Recipe complies with Islamic dietary laws."
+    },
+    "dietKosher": {
+      "type": "token",
+      "description": "Recipe complies with Jewish dietary laws."
+    },
+    "dietPaleo": {
+      "type": "token",
+      "description": "Recipe suitable for paleolithic diet requirements."
+    },
+    "dietKeto": {
+      "type": "token",
+      "description": "Recipe suitable for ketogenic diet requirements."
+    },
+    "licenseAllRights": {
+      "type": "token",
+      "description": "All rights reserved by the creator."
+    },
+    "licenseCreativeCommonsBy": {
+      "type": "token",
+      "description": "Creative Commons Attribution 4.0 License."
+    },
+    "licenseCreativeCommonsBySa": {
+      "type": "token",
+      "description": "Creative Commons Attribution-ShareAlike 4.0 License."
+    },
+    "licenseCreativeCommonsByNc": {
+      "type": "token",
+      "description": "Creative Commons Attribution-NonCommercial 4.0 License."
+    },
+    "licenseCreativeCommonsByNcSa": {
+      "type": "token",
+      "description": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License."
+    },
+    "licensePublicDomain": {
+      "type": "token",
+      "description": "Work dedicated to the public domain."
+    },
+    "publicationTypeBook": {
+      "type": "token",
+      "description": "Recipe from a published book."
+    },
+    "publicationTypeMagazine": {
+      "type": "token",
+      "description": "Recipe from a magazine."
+    }
+  }
+}
