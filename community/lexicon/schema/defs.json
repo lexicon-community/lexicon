@@ -12,6 +12,7 @@
         "indexedAt": { "type": "string", "format": "datetime" },
         "dependencies": {
           "type": "array",
+          "description": "List of direct dependencies of this schema. These are the external refs used within the record.",
           "items": { "type": "ref", "ref": "com.atproto.repo.strongRef" }
         }
       }
