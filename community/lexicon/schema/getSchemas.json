@@ -1,0 +1,48 @@
+{
+  "lexicon": 1,
+  "id": "community.lexicon.schema.getSchemas",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Gets schema views for a specified list of lexicon schemas (by AT-URI, with optional CID).",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["refs"],
+          "properties": {
+            "refs": {
+              "type": "array",
+              "description": "List of schema refs (AT-URI with optional CID) to return hydrated views for.",
+              "items": {
+                "type": "object",
+                "required": ["uri"],
+                "properties": {
+                  "uri": { "type": "string", "format": "at-uri" },
+                  "cid": { "type": "string", "format": "cid" }
+                }
+              },
+              "maxLength": 25
+            }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["schemas"],
+          "properties": {
+            "schemas": {
+              "type": "array",
+              "items": {
+                "type": "ref",
+                "ref": "community.lexicon.schema.defs#schemaView"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
