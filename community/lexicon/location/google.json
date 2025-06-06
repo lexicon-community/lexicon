@@ -1,0 +1,23 @@
+{
+    "lexicon": 1,
+    "id": "community.lexicon.location.google",
+    "defs": {
+        "main": {
+            "type": "object",
+            "description": "A place identified by a Google Maps Place ID.",
+            "required": [
+                "place_id"
+            ],
+            "properties": {
+                "place_id": {
+                    "type": "string",
+                    "description": "The unique identifier of a place in the Google Places database and on Google Maps."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A user-supplied name of the location. (Optional, as a name can be displayed using a Place ID)."
+                }
+            }
+        }
+    }
+}
