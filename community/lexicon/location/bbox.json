@@ -1,0 +1,38 @@
+{
+    "lexicon": 1,
+    "id": "community.lexicon.location.bbox",
+    "defs": {
+        "main": {
+            "type": "object",
+            "description": "A bounding box representing a rectangular geographic area defined by its corner coordinates.",
+            "required": [
+                "north",
+                "west",
+                "south",
+                "east"
+            ],
+            "properties": {
+                "north": {
+                    "type": "string",
+                    "description": "The northern latitude boundary of the bounding box."
+                },
+                "west": {
+                    "type": "string",
+                    "description": "The western longitude boundary of the bounding box."
+                },
+                "south": {
+                    "type": "string",
+                    "description": "The southern latitude boundary of the bounding box."
+                },
+                "east": {
+                    "type": "string",
+                    "description": "The eastern longitude boundary of the bounding box."
+                }
+,                "name": {
+                    "type": "string",
+                    "description": "The name of the bounding box, if any."
+                }
+            }
+        }
+    }
+}
