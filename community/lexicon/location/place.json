@@ -1,0 +1,117 @@
+{
+    "lexicon": 1,
+    "id": "community.lexicon.location.place",
+    "defs": {
+        "location": {
+            "type": "union",
+            "refs": [
+                "community.lexicon.location.geo",
+                "community.lexicon.location.hthree",
+                "community.lexicon.location.address",
+                "community.lexicon.location.wkt",
+                "community.lexicon.location.geojson"
+            ],
+            "closed": false
+        },
+        "name": {
+            "type": "object",
+            "required": ["text"],
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The name text."
+                },
+                "lang": {
+                    "type": "string",
+                    "description": "The language of the name, using two-letter ISO 639-1 codes.",
+                    "format": "language"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of the name, where lower numbers indicate higher priority."
+                }
+            }
+        },
+        "main": {
+            "type": "record",
+            "key": "record-key",
+            "description": "A geographic place with location, name(s), and other attributes.",
+            "record": {
+                "type": "object",
+                "required": [],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "A globally unique identifier. Conventionally `<dataset NSID>:<record ID>` for authoritative records.",
+                        "format": "record-key"
+                    },
+                    "location": {
+                        "type": "#location",
+                        "description": "The geographic location of the place."
+                    },
+                    "names": {
+                        "type": "array",
+                        "description": "The names associated with the place, including linguistic and alternate variants.",
+                        "items": {
+                            "type": "#name"
+                        }
+                    },
+                    "attributes": {
+                        "type": "unknown",
+                        "description": "Additional, source-dependent attributes of the place."
+                    },
+                    "published_at": {
+                        "type": "string",
+                        "description": "The date when the place record was last updated",
+                        "format": "datetime"
+                    },
+                    "same_as": {
+                        "type": "array",
+                        "description": "A list of place IDs that refer to the same place in different datasets or contexts.",
+                        "items": {
+                            "type": "string",
+                            "format": "record-key"
+                        }
+                    }
+                }
+            }
+        },
+        "ref": {
+            "type": "object",
+            "description": "A reference to a geographic place defined elsewhere.",
+            "required": ["id"],
+            "properties": {
+                "cid": {
+                    "type": "string",
+                    "description": "An optional reference to a specific version of the place definition.",
+                    "format": "cid"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "A globally unique identifier for the place.",
+                    "format": "record-key"
+                },
+                "location": {
+                    "type": "#location",
+                    "description": "The geographic location of the place."
+                },
+                "names": {
+                    "type": "array",
+                    "description": "The names associated with the place, included for durability or convenience.",
+                    "items": {
+                        "type": "#name"
+                    }
+                },
+                "attributes": {
+                    "type": "unknown",
+                    "description": "Additional attributes, included for durability or convenience."
+                },
+                "published_at": {
+                    "type": "string",
+                    "description": "The date when the place record was last updated",
+                    "format": "datetime"
+                }
+            }
+        }
+    }
+}
