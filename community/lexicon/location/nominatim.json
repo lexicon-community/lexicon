@@ -1,0 +1,41 @@
+{
+    "lexicon": 1,
+    "id": "community.lexicon.location.nominatim",
+    "defs": {
+        "main": {
+            "type": "object",
+            "description": "A physical location from OpenStreetMap data via the Nominatim geocoding service.",
+            "required": [
+                "osm_id",
+                "osm_type"
+            ],
+            "properties": {
+                "osm_id": {
+                    "type": "string",
+                    "description": "The OpenStreetMap identifier for this location."
+                },
+                "osm_type": {
+                    "type": "string",
+                    "description": "The type of OpenStreetMap object.",
+                    "enum": ["node", "way", "relation"]
+                },
+                "latitude": {
+                    "type": "string",
+                    "description": "Latitude coordinate of the location."
+                },
+                "longitude": {
+                    "type": "string",
+                    "description": "Longitude coordinate of the location."
+                },
+                "display_name": {
+                    "type": "string",
+                    "description": "Human-readable address or location description."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the location."
+                }
+            }
+        }
+    }
+}
