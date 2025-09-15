@@ -22,9 +22,9 @@ We start with four basic use cases for using Web Monetization in AT Protocol:
 * Send a payment to someone
 * Receive a payment from someone
 
-The first two are provided for by a new [`lexicon.community.monetization.web` lexicon](#lexicon). You can publish and associate a wallet address with your account by creating a record in your ATProto repo with this lexicon. You can publish multiple wallet addresses by creating multiple records. You can change or delete an address later by editing or deleting the corresponding record.
+The first two are provided for by a new [`community.lexicon.payments.webMonetization` lexicon](#lexicon). You can publish and associate a wallet address with your account by creating a record in your ATProto repo with this lexicon. You can publish multiple wallet addresses by creating multiple records. You can change or delete an address later by editing or deleting the corresponding record.
 
-To discover an ATProto account's wallet addresses, you can call the [`com.atproto.repo.listRecords`](https://docs.bsky.app/docs/api/com-atproto-repo-list-records) API method on their PDS with their repo and `collection=lexicon.community.monetization.web`. This is fairly low level, though. Over time, we hope that [appviews](https://docs.bsky.app/docs/advanced-guides/federation-architecture#app-views) will add native support and bundle wallet addresses into their user profile objects.
+To discover an ATProto account's wallet addresses, you can call the [`com.atproto.repo.listRecords`](https://docs.bsky.app/docs/api/com-atproto-repo-list-records) API method on their PDS with their repo and `collection=community.lexicon.payments.webMonetization`. This is fairly low level, though. Over time, we hope that [appviews](https://docs.bsky.app/docs/advanced-guides/federation-architecture#app-views) will add native support and bundle wallet addresses into their user profile objects.
 
 ATProto clients can display users' wallet addresses in their profiles. They should [fetch each wallet](https://openpayments.dev/apis/wallet-address-server/operations/get-wallet-address/#200) and display its name ([background](#bidirectional-verification)), along with an appropriate visual indicator, eg 💵, and optionally the user's note for the wallet.
 
@@ -33,11 +33,11 @@ Clients that support making payments can let users add, edit, and remove their w
 
 ## Lexicon
 
-We propose a new [`lexicon.community.monetization.web` lexicon](https://github.com/lexicon-community/lexicon/blob/main/community/lexicon/monetization/) for Web Monetization wallet addresses that supports these use cases. It consists of two strings, a wallet address and an optional note. Here's an example:
+We propose a new [`community.lexicon.payments.webMonetization` lexicon](https://github.com/lexicon-community/lexicon/blob/main/community/lexicon/monetization/) for Web Monetization wallet addresses that supports these use cases. It consists of two strings, a wallet address and an optional note. Here's an example:
 
 ```json
 {
-  "$type": "lexicon.community.monetization.web",
+  "$type": "community.lexicon.payments.webMonetization",
   "address": "https://wallet.example/alice",
   "note": "Alice's personal wallet"
 }
