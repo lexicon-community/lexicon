@@ -30,6 +30,8 @@ ATProto clients can display users' wallet addresses in their profiles. They shou
 
 Clients that support making payments can let users add, edit, and remove their wallet addresses. Clients can also use the Open Payments API to let users send and receive payments. Web-based clients may also use Web Monetization events and related APIs. [See the docs](https://webmonetization.org/docs/) for details.
 
+You can also use the [sidecar record pattern](https://docs.bsky.app/blog/pinned-posts#current-recommendations) to attach wallet addresses to individual posts and other records. When you create a post, create `community.lexicon.payments.webMonetization` in the same repo with the same rkey as the post. When wallet-aware clients then load that post, they'd also look for a `webMonetization` with the same rkey, and if it exists, render it as the attached wallet address.
+
 
 ## Lexicon
 
