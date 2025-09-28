@@ -6,7 +6,7 @@
     "main": {
       "type": "record",
       "description": "Web Monetization wallet.",
-      "key": "tid",
+      "key": "any",
       "record": {
         "type": "object",
         "required": ["address"],
