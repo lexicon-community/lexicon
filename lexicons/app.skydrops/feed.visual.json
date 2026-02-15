@@ -1,0 +1,29 @@
+{
+  "lexicon": 1,
+  "id": "app.skydrops.feed.visual",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "High-fidelity visual or long-form content for the Zenith layer.",
+      "record": {
+        "type": "object",
+        "required": ["mediaType", "createdAt"],
+        "properties": {
+          "mediaType": { "type": "string", "knownValues": ["image", "video", "article"] },
+          "image": { "type": "blob", "accept": ["image/*"] },
+          "video": { "type": "blob", "accept": ["video/*"] },
+          "title": { "type": "string", "maxLength": 100 },
+          "content": { "type": "string", "maxLength": 10000 },
+          "aspectRatio": {
+            "type": "object",
+            "properties": {
+              "width": { "type": "integer" },
+              "height": { "type": "integer" }
+            }
+          },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
