@@ -1,0 +1,20 @@
+{
+  "lexicon": 1,
+  "id": "app.skydrops.user.echo",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A lightweight resonance record for sharing drops.",
+      "record": {
+        "type": "object",
+        "required": ["subject", "createdAt"],
+        "properties": {
+          "subject": { "type": "com.atproto.repo.strongRef" },
+          "resonance": { "type": "integer", "minimum": 1, "maximum": 5 },
+          "comment": { "type": "string", "maxLength": 140 },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
