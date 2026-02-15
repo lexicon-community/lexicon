@@ -1,0 +1,22 @@
+{
+  "lexicon": 1,
+  "id": "app.skydrops.feed.drop",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A high-fidelity audio/video drop in the Digital Gravity field.",
+      "record": {
+        "type": "object",
+        "required": ["audio", "createdAt"],
+        "properties": {
+          "audio": { "type": "blob", "accept": ["audio/*"] },
+          "text": { "type": "string", "maxLength": 300 },
+          "videoSource": { "type": "com.atproto.repo.strongRef" },
+          "altitude": { "type": "string", "knownValues": ["meadow", "zenith"] },
+          "heliaCurated": { "type": "boolean", "default": false },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
