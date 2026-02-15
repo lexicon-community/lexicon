@@ -1,0 +1,21 @@
+{
+  "lexicon": 1,
+  "id": "app.skydrops.feed.zenithSort",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "Helia's local curation instructions for Zenith prioritization.",
+      "record": {
+        "type": "object",
+        "required": ["subject", "priority", "createdAt"],
+        "properties": {
+          "subject": { "type": "com.atproto.repo.strongRef" },
+          "priority": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "constellation": { "type": "string" },
+          "heliaNote": { "type": "string", "maxLength": 140 },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
