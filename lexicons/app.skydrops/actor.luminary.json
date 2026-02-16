@@ -1,0 +1,27 @@
+{
+  "lex": 1,
+  "id": "app.skydrops.actor.luminary",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "The profile definition for a Skydrops user. Singular: Lumen. Plural: Luminaries.",
+      "key": "literal:self",
+      "record": {
+        "type": "object",
+        "required": ["handleType"],
+        "properties": {
+          "displayName": { "type": "string", "maxLength": 64 },
+          "description": { "type": "string", "maxLength": 256 },
+          "avatar": { "type": "blob", "accept": ["image/*"] },
+          "banner": { "type": "blob", "accept": ["image/*"] },
+          "handleType": { 
+            "type": "string", 
+            "description": "Defines the user as an individual 'Lumen' within the collective 'Luminaries'." 
+          },
+          "tagline": { "type": "string", "default": "Where the Skies touch Grass" },
+          "greeting": { "type": "string", "default": "Welcome home, Luminary!" }
+        }
+      }
+    }
+  }
+}
