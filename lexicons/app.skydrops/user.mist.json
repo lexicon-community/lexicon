@@ -1,0 +1,20 @@
+{
+  "lex": 1,
+  "id": "app.skydrops.user.mist",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A misty, ephemeral status update.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["text", "expiresAt", "createdAt"],
+        "properties": {
+          "text": { "type": "string", "maxLength": 140 },
+          "expiresAt": { "type": "string", "format": "date-time" },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
