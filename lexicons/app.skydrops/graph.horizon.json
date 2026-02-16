@@ -1,0 +1,19 @@
+{
+  "lex": 1,
+  "id": "app.skydrops.graph.horizon",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A follow relationship within the Skydrops horizon.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["subject", "createdAt"],
+        "properties": {
+          "subject": { "type": "string", "format": "did" },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
