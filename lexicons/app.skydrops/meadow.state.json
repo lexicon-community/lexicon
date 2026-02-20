@@ -1,0 +1,21 @@
+{
+  "lexicon": 1,
+  "id": "app.skydrops.meadow.state",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "Visual state for the audio timeline in the meadow.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["audioUri", "rainLevel", "createdAt"],
+        "properties": {
+          "audioUri": { "type": "string", "format": "uri" },
+          "rainLevel": { "type": "float", "minimum": 0, "maximum": 1.0 },
+          "timestamp": { "type": "integer" },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}
