@@ -1,0 +1,12 @@
+{
+  "lexicons": [
+    "app.bsky.actor.profile",
+    "app.bsky.notification.listNotifications",
+    "app.bsky.feed.post",
+    "app.bsky.feed.like",
+    "app.bsky.graph.follow",
+    "./lexicons/app.skydrops.feed.broadcast.json",
+    "./lexicons/app.skydrops.meadow.state.json",
+    "./lexicons/app.skydrops.feed.game.json"
+  ]
+}
