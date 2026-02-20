@@ -1,0 +1,21 @@
+{
+  "lexicon": 1,
+  "id": "app.skydrops.feed.game",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A game session or challenge post in the firmament.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["gameId", "createdAt"],
+        "properties": {
+          "gameId": { "type": "string" },
+          "highScore": { "type": "integer" },
+          "playSessionUri": { "type": "string", "format": "uri" },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}
