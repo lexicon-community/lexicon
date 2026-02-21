@@ -1,12 +1,11 @@
 {
   "lexicons": [
-    "app.bsky.actor.profile",
-    "app.bsky.notification.listNotifications",
-    "app.bsky.feed.post",
-    "app.bsky.feed.like",
-    "app.bsky.graph.follow",
-    "./lexicons/app.skydrops.feed.broadcast.json",
-    "./lexicons/app.skydrops.meadow.state.json",
-    "./lexicons/app.skydrops.feed.game.json"
+    "./lexicons/app/bsky/actor/profile.json",
+    "./lexicons/app/bsky/notification/listNotifications.json",
+    "./lexicons/app/bsky/feed/post.json",
+    "./lexicons/chat/bsky/convo/sendMessage.json",
+    "./lexicons/app/skydrops/feed/broadcast.json",
+    "./lexicons/app/skydrops/feed/game.json",
+    "./lexicons/app/skydrops/meadow/state.json"
   ]
 }
