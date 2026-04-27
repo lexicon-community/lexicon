@@ -1,0 +1,113 @@
+{
+  "lexicon": 1,
+  "id": "community.lexicon.app.profile",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "The official self-published profile for an app built on or for the AT Protocol. This record should be published by the app's official account and used by consumers as the canonical record for that app.",
+      "key": "literal:self",
+      "record": {
+        "type": "object",
+        "required": ["name", "url", "recordCreatedAt"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "maxGraphemes": 100,
+            "description": "The display name of the app."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The primary URL for the app, such as its website, landing page, or install page."
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000,
+            "maxGraphemes": 300,
+            "description": "A short description of what the app does."
+          },
+          "logo": {
+            "type": "blob",
+            "accept": ["image/png", "image/jpeg", "image/webp", "image/svg+xml"],
+            "maxSize": 500000,
+            "description": "Primary logo for display. Should preferably be square."
+          },
+          "tags": {
+            "type": "array",
+            "maxLength": 10,
+            "items": {
+              "type": "string",
+              "maxLength": 64,
+              "maxGraphemes": 32
+            },
+            "description": "Open discovery tags for filtering and search, preferably lowercase."
+          },
+          "status": {
+            "type": "string",
+            "knownValues": [
+              "unreleased",
+              "preview",
+              "released",
+              "unmaintained",
+              "discontinued"
+            ],
+            "description": "Current release or maintenance status of the app."
+          },
+          "links": {
+            "type": "array",
+            "maxLength": 12,
+            "description": "Relevant links for the app, including trust/compliance, support, and project resources.",
+            "items": {
+              "type": "ref",
+              "ref": "#link"
+            }
+          },
+          "recordCreatedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Timestamp when this profile record was created."
+          },
+          "recordUpdatedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Timestamp when this profile record was last updated."
+          }
+        }
+      }
+    },
+    "link": {
+      "type": "object",
+      "required": ["type", "url"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "knownValues": [
+            "privacy",
+            "terms",
+            "support",
+            "contact",
+            "docs",
+            "blog",
+            "changelog",
+            "source",
+            "status",
+            "other"
+          ],
+          "description": "The kind of link."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The destination URL."
+        },
+        "label": {
+          "type": "string",
+          "maxLength": 100,
+          "maxGraphemes": 50,
+          "description": "Optional human-readable label, especially useful when type is 'other'."
+        }
+      }
+    }
+  }
+}
