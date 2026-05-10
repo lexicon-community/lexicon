@@ -4,11 +4,11 @@
   "defs": {
     "main": {
       "type": "record",
-      "description": "An app entry describing an app built on or for the AT Protocol. This record may be published by third parties or by the app itself. When an official self-published app profile exists, consumers should prefer that profile as the canonical record.",
+      "description": "A third-party or community listing for an app built on or for the AT Protocol.",
       "key": "tid",
       "record": {
         "type": "object",
-        "required": ["name", "url", "recordCreatedAt"],
+        "required": ["name", "links", "createdAt"],
         "properties": {
           "name": {
             "type": "string",
@@ -16,21 +16,15 @@
             "maxGraphemes": 100,
             "description": "The display name of the app."
           },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "description": "The primary URL for the app, such as its website, landing page, or install page."
-          },
           "description": {
             "type": "string",
-            "maxLength": 1000,
+            "maxLength": 3000,
             "maxGraphemes": 300,
             "description": "A short description of what the app does."
           },
           "logo": {
-            "type": "blob",
-            "accept": ["image/png", "image/jpeg", "image/webp", "image/svg+xml"],
-            "maxSize": 500000,
+            "type": "ref",
+            "ref": "community.lexicon.app.defs#image",
             "description": "Primary logo for display. Should preferably be square."
           },
           "tags": {
@@ -44,78 +38,44 @@
             "description": "Open discovery tags for filtering and search, preferably lowercase."
           },
           "status": {
-            "type": "string",
-            "knownValues": [
-              "unreleased",
-              "preview",
-              "released",
-              "unmaintained",
-              "discontinued"
-            ],
+            "type": "ref",
+            "ref": "community.lexicon.app.defs#status",
             "description": "Current release or maintenance status of the app."
           },
-          "officialAccountDid": {
+          "profileDid": {
             "type": "string",
             "format": "did",
-            "description": "The DID of the app's official AT Protocol account, if known."
+            "description": "DID expected to publish the canonical app profile at community.lexicon.app.profile/self."
           },
-          "officialProfileUri": {
+          "locale": {
             "type": "string",
-            "format": "at-uri",
-            "description": "AT URI of the app's official self-published profile record, if it exists."
+            "format": "language",
+            "description": "BCP 47 language tag indicating the language or regional audience this entry is intended for."
           },
           "links": {
             "type": "array",
             "maxLength": 12,
-            "description": "Relevant links for the app, including trust/compliance, support, and project resources.",
+            "description": "Relevant destinations for the app. The first link should be the primary destination.",
             "items": {
               "type": "ref",
-              "ref": "#link"
+              "ref": "community.lexicon.app.defs#link"
             }
           },
-          "recordCreatedAt": {
+          "webManifestUri": {
             "type": "string",
-            "format": "datetime",
-            "description": "Timestamp when this entry record was created."
+            "format": "uri",
+            "description": "URI of a Web App Manifest for richer install and directory metadata, such as icons and screenshots."
           },
-          "recordUpdatedAt": {
+          "createdAt": {
             "type": "string",
             "format": "datetime",
-            "description": "Timestamp when this entry record was last updated."
+            "description": "Client-declared timestamp when this entry was created."
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Client-declared timestamp when this entry was last updated."
           }
-        }
-      }
-    },
-    "link": {
-      "type": "object",
-      "required": ["type", "url"],
-      "properties": {
-        "type": {
-          "type": "string",
-          "knownValues": [
-            "privacy",
-            "terms",
-            "support",
-            "contact",
-            "docs",
-            "blog",
-            "changelog",
-            "source",
-            "status",
-            "other"
-          ],
-          "description": "The kind of link."
-        },
-        "url": {
-          "type": "string",
-          "format": "uri",
-          "description": "The destination URL."
-        },
-        "label": {
-          "type": "string",
-          "maxLength": 100,
-          "maxGraphemes": 50,
-          "description": "Optional human-readable label, especially useful when type is 'other'."
         }
       }
     }

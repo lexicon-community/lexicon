@@ -4,20 +4,44 @@ This set of Lexicon schemas describes apps built on or for the AT Protocol.
 
 ## Records
 
-* `entry`: A community-submitted app listing. Any account can publish an
-  entry for an app, including apps they do not own.
+* `profile`: A canonical app profile published by the app's DID at rkey
+  `self`.
 
-* `profile`: An official self-published app profile. This record should be
-  published by the app's official account at rkey `self`.
+* `profileLocalization`: Locale-specific metadata for a canonical app profile.
+  These records should be published by the same DID as the profile. Publishers
+  should use normalized BCP 47 language tags as rkeys when possible, such as
+  `fr` or `pt-BR`; consumers should trust the record's `locale` field over the
+  rkey.
 
-## Official app profiles
+* `entry`: A community or third-party app listing. Any account can publish an
+  entry, including entries for apps they do not own.
 
-Consumers may use `community.lexicon.app.entry` records for discovery, curation,
-and third-party directories. When an official `community.lexicon.app.profile`
-record exists, consumers should prefer that profile as the canonical app record.
+## Canonical profiles
 
-An entry can point to an official profile with `officialProfileUri`, and can
-name the app's official account with `officialAccountDid`.
+Entries can name a `profileDid`. Consumers can derive the canonical profile URI
+from that DID:
+
+```text
+at://<profileDid>/community.lexicon.app.profile/self
+```
+
+An entry without `profileDid` should be treated as a standalone third-party
+listing. A `profileDid` is a pointer to where a canonical profile may exist, not
+proof of ownership or verification by itself.
+
+## Internationalization
+
+Entries can include a `locale` field when the listing is intended for a
+particular language or regional audience. App publishers can add
+`profileLocalization` records for authoritative localized names, descriptions,
+links, logos, and Web App Manifest URIs.
+
+## Rich app metadata
+
+Records may include `webManifestUri` to point at a Web App Manifest. Manifests
+can describe install behavior, icons, screenshots, language, and platform or
+form-factor metadata without storing large promotional media directly in app
+records.
 
 ## Verification
 

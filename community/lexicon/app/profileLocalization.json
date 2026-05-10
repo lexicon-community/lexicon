@@ -1,31 +1,37 @@
 {
   "lexicon": 1,
-  "id": "community.lexicon.app.profile",
+  "id": "community.lexicon.app.profileLocalization",
+  "description": "Localized metadata for a community.lexicon.app.profile record.",
   "defs": {
     "main": {
       "type": "record",
-      "description": "The canonical self-published profile for an app built on or for the AT Protocol.",
-      "key": "literal:self",
+      "description": "A locale-specific override for an app profile. This record should be published by the same DID as the canonical app profile.",
+      "key": "any",
       "record": {
         "type": "object",
-        "required": ["name", "links", "createdAt"],
+        "required": ["locale", "createdAt"],
         "properties": {
+          "locale": {
+            "type": "string",
+            "format": "language",
+            "description": "BCP 47 language tag for this localized metadata."
+          },
           "name": {
             "type": "string",
             "maxLength": 200,
             "maxGraphemes": 100,
-            "description": "The display name of the app."
+            "description": "Localized display name of the app."
           },
           "description": {
             "type": "string",
             "maxLength": 3000,
             "maxGraphemes": 300,
-            "description": "A short description of what the app does."
+            "description": "Localized description of what the app does."
           },
           "logo": {
             "type": "ref",
             "ref": "community.lexicon.app.defs#image",
-            "description": "Primary logo for display. Should preferably be square."
+            "description": "Localized logo or localized logo alt text for display."
           },
           "tags": {
             "type": "array",
@@ -35,17 +41,12 @@
               "maxLength": 64,
               "maxGraphemes": 32
             },
-            "description": "Open discovery tags for filtering and search, preferably lowercase."
-          },
-          "status": {
-            "type": "ref",
-            "ref": "community.lexicon.app.defs#status",
-            "description": "Current release or maintenance status of the app."
+            "description": "Localized discovery tags for filtering and search."
           },
           "links": {
             "type": "array",
             "maxLength": 12,
-            "description": "Relevant destinations for the app. The first link should be the primary destination.",
+            "description": "Localized destinations for the app. The first link should be the primary destination for this locale.",
             "items": {
               "type": "ref",
               "ref": "community.lexicon.app.defs#link"
@@ -54,17 +55,17 @@
           "webManifestUri": {
             "type": "string",
             "format": "uri",
-            "description": "URI of a Web App Manifest for richer install and directory metadata, such as icons and screenshots."
+            "description": "URI of a localized Web App Manifest for richer install and directory metadata."
           },
           "createdAt": {
             "type": "string",
             "format": "datetime",
-            "description": "Client-declared timestamp when this profile was created."
+            "description": "Client-declared timestamp when this localization was created."
           },
           "updatedAt": {
             "type": "string",
             "format": "datetime",
-            "description": "Client-declared timestamp when this profile was last updated."
+            "description": "Client-declared timestamp when this localization was last updated."
           }
         }
       }
