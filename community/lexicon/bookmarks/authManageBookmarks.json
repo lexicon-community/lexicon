@@ -1,0 +1,41 @@
+{
+  "$type": "com.atproto.lexicon.schema",
+  "lexicon": 1,
+  "id": "community.lexicon.bookmarks.authManageBookmarks",
+  "defs": {
+    "main": {
+      "type": "permission-set",
+      "title": "Manage bookmarks",
+      "title:lang": {
+        "ja": "ブックマークの管理",
+        "es": "Gestionar marcadores",
+        "pt": "Gerenciar favoritos",
+        "de": "Lesezeichen verwalten"
+      },
+      "detail": "View, create, edit, and delete the account's saved bookmarks.",
+      "detail:lang": {
+        "ja": "アカウントに保存されたブックマークの表示、作成、編集、削除を行います。",
+        "pt": "Ver, criar, editar e excluir os favoritos salvos da conta.",
+        "es": "Ver, crear, editar y eliminar los marcadores guardados de la cuenta.",
+        "de": "Die gespeicherten Lesezeichen des Kontos anzeigen, erstellen, bearbeiten und löschen."
+      },
+      "permissions": [
+        {
+          "type": "permission",
+          "resource": "rpc",
+          "inheritAud": true,
+          "lxm": [
+            "community.lexicon.bookmarks.getActorBookmarks"
+          ]
+        },
+        {
+          "type": "permission",
+          "resource": "repo",
+          "collection": [
+            "community.lexicon.bookmarks.bookmark"
+          ]
+        }
+      ]
+    }
+  }
+}
