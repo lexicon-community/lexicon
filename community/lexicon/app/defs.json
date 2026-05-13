@@ -22,17 +22,29 @@
     },
     "image": {
       "type": "object",
-      "description": "An image associated with an app, including accessibility and display metadata.",
-      "required": ["image", "alt"],
+      "description": "An image associated with an app, including accessibility and display metadata. Use either image for an ATProto blob or uri for a remotely hosted image.",
+      "required": ["alt"],
       "properties": {
+        "purpose": {
+          "type": "string",
+          "knownValues": ["icon", "logo", "hero", "screenshot", "banner", "social-card", "app-store", "ad", "other"],
+          "description": "How directories and stores should use the image."
+        },
         "image": {
           "type": "blob",
           "description": "The raw image file.",
           "accept": ["image/*"],
           "maxSize": 2000000
         },
+        "uri": {
+          "type": "string",
+          "format": "uri",
+          "description": "Remote image URI."
+        },
         "alt": {
           "type": "string",
+          "maxLength": 1000,
+          "maxGraphemes": 300,
           "description": "Alt text description of the image, for accessibility."
         },
         "aspectRatio": {

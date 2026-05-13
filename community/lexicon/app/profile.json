@@ -22,10 +22,14 @@
             "maxGraphemes": 300,
             "description": "A short description of what the app does."
           },
-          "logo": {
-            "type": "ref",
-            "ref": "community.lexicon.app.defs#image",
-            "description": "Primary logo for display. Should preferably be square."
+          "images": {
+            "type": "array",
+            "maxLength": 12,
+            "description": "Visual assets for directories and stores, such as icons, hero images, screenshots, banners, and social cards.",
+            "items": {
+              "type": "ref",
+              "ref": "community.lexicon.app.defs#image"
+            }
           },
           "tags": {
             "type": "array",

@@ -28,10 +28,14 @@
             "maxGraphemes": 300,
             "description": "Localized description of what the app does."
           },
-          "logo": {
-            "type": "ref",
-            "ref": "community.lexicon.app.defs#image",
-            "description": "Localized logo or localized logo alt text for display."
+          "images": {
+            "type": "array",
+            "maxLength": 12,
+            "description": "Localized visual assets for directories and stores, such as icons, hero images, screenshots, banners, and social cards.",
+            "items": {
+              "type": "ref",
+              "ref": "community.lexicon.app.defs#image"
+            }
           },
           "tags": {
             "type": "array",

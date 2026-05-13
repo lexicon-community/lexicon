@@ -34,14 +34,19 @@ proof of ownership or verification by itself.
 Entries can include a `locale` field when the listing is intended for a
 particular language or regional audience. App publishers can add
 `profileLocalization` records for authoritative localized names, descriptions,
-links, logos, and Web App Manifest URIs.
+links, images, and Web App Manifest URIs.
 
 ## Rich app metadata
 
-Records may include `webManifestUri` to point at a Web App Manifest. Manifests
-can describe install behavior, icons, screenshots, language, and platform or
-form-factor metadata without storing large promotional media directly in app
-records.
+Records can include an `images` array for icons, logos, hero images,
+screenshots, banners, social cards, app store visuals, ads, or other directory
+media. Each image includes alt text and either an ATProto blob or a hosted image
+URI; purpose and aspect ratio are optional.
+
+Records may also include `webManifestUri` to point at a Web App Manifest.
+Manifests can prefill or augment install behavior, icons, screenshots,
+language, and platform or form-factor metadata without making manifests the only
+way to describe visual assets.
 
 ## Verification
 
