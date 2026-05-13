@@ -1,0 +1,34 @@
+{
+  "$type": "com.atproto.lexicon.schema",
+  "lexicon": 1,
+  "id": "community.lexicon.bookmarks.authViewBookmarks",
+  "defs": {
+    "main": {
+      "type": "permission-set",
+      "title": "View bookmarks",
+      "title:lang": {
+        "ja": "ブックマークの表示",
+        "pt": "Ver favoritos",
+        "es": "Ver marcadores",
+        "de": "Lesezeichen anzeigen"
+      },
+      "detail": "View the account's saved bookmarks.",
+      "detail:lang": {
+        "ja": "アカウントに保存されたブックマークを表示します。",
+        "pt": "Ver os favoritos salvos da conta.",
+        "es": "Ver los marcadores guardados de la cuenta.",
+        "de": "Die gespeicherten Lesezeichen des Kontos anzeigen."
+      },
+      "permissions": [
+        {
+          "type": "permission",
+          "resource": "rpc",
+          "inheritAud": true,
+          "lxm": [
+            "community.lexicon.bookmarks.getActorBookmarks"
+          ]
+        }
+      ]
+    }
+  }
+}
