@@ -24,7 +24,7 @@
           },
           "images": {
             "type": "array",
-            "maxLength": 12,
+            "maxLength": 24,
             "description": "Visual assets for directories and stores, such as icons, hero images, screenshots, banners, and social cards.",
             "items": {
               "type": "ref",
@@ -48,6 +48,7 @@
           },
           "links": {
             "type": "array",
+            "minLength": 1,
             "maxLength": 12,
             "description": "Relevant destinations for the app. The first link should be the primary destination.",
             "items": {
@@ -58,7 +59,7 @@
           "webManifestUri": {
             "type": "string",
             "format": "uri",
-            "description": "URI of a Web App Manifest for richer install and directory metadata, such as icons and screenshots."
+            "description": "HTTPS URI of a Web App Manifest for richer install and directory metadata, such as icons and screenshots."
           },
           "createdAt": {
             "type": "string",

@@ -22,12 +22,22 @@
     },
     "image": {
       "type": "object",
-      "description": "An image associated with an app, including accessibility and display metadata. Use either image for an ATProto blob or uri for a remotely hosted image.",
+      "description": "An image associated with an app, including accessibility and display metadata. Exactly one of `image` (ATProto blob) or `uri` (remote URL) MUST be present. Consumers SHOULD ignore image items that have neither or both.",
       "required": ["alt"],
       "properties": {
         "purpose": {
           "type": "string",
-          "knownValues": ["icon", "logo", "hero", "screenshot", "banner", "social-card", "app-store", "ad", "other"],
+          "knownValues": [
+            "community.lexicon.app.defs#purposeIcon",
+            "community.lexicon.app.defs#purposeLogo",
+            "community.lexicon.app.defs#purposeHero",
+            "community.lexicon.app.defs#purposeScreenshot",
+            "community.lexicon.app.defs#purposeBanner",
+            "community.lexicon.app.defs#purposeSocialCard",
+            "community.lexicon.app.defs#purposeAppStore",
+            "community.lexicon.app.defs#purposeAd",
+            "community.lexicon.app.defs#purposeOther"
+          ],
           "description": "How directories and stores should use the image."
         },
         "image": {
@@ -67,6 +77,42 @@
           "minimum": 1
         }
       }
+    },
+    "purposeIcon": {
+      "type": "token",
+      "description": "A small square icon representing the app, typically used in launchers, lists, and tab bars."
+    },
+    "purposeLogo": {
+      "type": "token",
+      "description": "A logotype or wordmark for the app."
+    },
+    "purposeHero": {
+      "type": "token",
+      "description": "A large promotional or feature image, typically used at the top of a directory listing."
+    },
+    "purposeScreenshot": {
+      "type": "token",
+      "description": "A screenshot of the app's UI, used in directory and store listings."
+    },
+    "purposeBanner": {
+      "type": "token",
+      "description": "A wide banner image, such as a header image for a profile or listing page."
+    },
+    "purposeSocialCard": {
+      "type": "token",
+      "description": "An image sized and formatted for social media sharing previews (Open Graph, Twitter Card, etc.)."
+    },
+    "purposeAppStore": {
+      "type": "token",
+      "description": "A promotional image formatted for a native app store listing."
+    },
+    "purposeAd": {
+      "type": "token",
+      "description": "A promotional or advertising image."
+    },
+    "purposeOther": {
+      "type": "token",
+      "description": "An image whose purpose does not fit any other known value."
     },
     "status": {
       "type": "string",

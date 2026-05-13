@@ -30,7 +30,7 @@
           },
           "images": {
             "type": "array",
-            "maxLength": 12,
+            "maxLength": 24,
             "description": "Localized visual assets for directories and stores, such as icons, hero images, screenshots, banners, and social cards.",
             "items": {
               "type": "ref",
@@ -49,6 +49,7 @@
           },
           "links": {
             "type": "array",
+            "minLength": 1,
             "maxLength": 12,
             "description": "Localized destinations for the app. The first link should be the primary destination for this locale.",
             "items": {
@@ -59,7 +60,7 @@
           "webManifestUri": {
             "type": "string",
             "format": "uri",
-            "description": "URI of a localized Web App Manifest for richer install and directory metadata."
+            "description": "HTTPS URI of a localized Web App Manifest for richer install and directory metadata."
           },
           "createdAt": {
             "type": "string",
