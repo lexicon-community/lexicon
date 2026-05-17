@@ -68,7 +68,7 @@
                             "ref": "community.lexicon.calendar.event#uri"
                         }
                     },
-                    "rsvp": {
+                    "rsvpExpected": {
                         "type": "boolean",
                         "description": "Whether a response is requested from attendees."
                     }
