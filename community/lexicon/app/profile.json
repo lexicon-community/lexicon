@@ -39,7 +39,7 @@
               "maxLength": 64,
               "maxGraphemes": 32
             },
-            "description": "Open discovery tags for filtering and search, preferably lowercase."
+            "description": "Open discovery tags for filtering and search, preferably lowercase. Do not use tags for platforms or lexicon interoperability."
           },
           "status": {
             "type": "ref",
@@ -56,10 +56,28 @@
               "ref": "community.lexicon.app.defs#link"
             }
           },
-          "webManifestUri": {
-            "type": "string",
-            "format": "uri",
-            "description": "HTTPS URI of a Web App Manifest for richer install and directory metadata, such as icons and screenshots."
+          "platforms": {
+            "type": "array",
+            "maxLength": 12,
+            "description": "Platforms where this app is available.",
+            "items": {
+              "type": "ref",
+              "ref": "community.lexicon.app.defs#platform"
+            }
+          },
+          "lexicons": {
+            "type": "ref",
+            "ref": "community.lexicon.app.defs#lexiconInterop",
+            "description": "Self-declared AT Protocol lexicon interoperability signals."
+          },
+          "accountIndicators": {
+            "type": "array",
+            "maxLength": 12,
+            "description": "Records whose presence in an account can indicate that the account probably uses this app.",
+            "items": {
+              "type": "ref",
+              "ref": "community.lexicon.app.defs#accountIndicator"
+            }
           },
           "createdAt": {
             "type": "string",

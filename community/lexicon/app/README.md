@@ -29,18 +29,60 @@ An entry without `profileDid` should be treated as a standalone third-party
 listing. A `profileDid` is a pointer to where a canonical profile may exist, not
 proof of ownership or verification by itself.
 
+## Links
+
+Records use `links` for all external and protocol destinations. The first link
+should be the primary app destination. A Web App Manifest is represented as a
+normal link with a known role:
+
+```json
+{
+  "role": "community.lexicon.app.defs#linkRoleWebManifest",
+  "label": "Web App Manifest",
+  "uri": "https://example.com/manifest.webmanifest"
+}
+```
+
+Distribution URLs, such as App Store, Play Store, and F-Droid listings, also
+belong in `links` with their corresponding roles.
+
+## Discovery signals
+
+Use `platforms` for platform filtering, `lexicons` for AT Protocol
+interoperability, and `tags` for freeform discovery or category labels. Tags
+should not duplicate platforms, lexicon interop, or language fields.
+
+The `lexicons` field is self-declared and may be incomplete. Directories can use
+it to answer questions like "which apps consume or produce this lexicon?", but
+should not treat it as verified/audited truth.
+
+The `accountIndicators` field lists records whose presence in an account can
+suggest that the account probably uses the app. For example:
+
+```json
+{
+  "collection": "org.passingreads.actor.profile",
+  "rkey": "self"
+}
+```
+
+This is only a heuristic usage signal. It does not prove active use, consent, or
+endorsement.
+
 ## Internationalization
 
-Entries can include a `locale` field when the listing is intended for a
-particular language or regional audience. App publishers can add
-`profileLocalization` records for authoritative localized names, descriptions,
-links, images, and Web App Manifest URIs.
+Entries can include `langs` to describe the human language of the entry text,
+matching the convention used by `app.bsky.feed.post`. This describes the
+listing, not every language supported by the app UI.
 
-Publishers SHOULD use a lowercase BCP 47 language tag as the record rkey (e.g.
-`fr`, `pt-br`, `zh-hant`) so the rkey acts as a natural uniqueness key per
-locale. Publishers SHOULD publish at most one `profileLocalization` record per
-locale. If duplicate records exist for the same locale, consumers SHOULD prefer
-the one with the most recent `updatedAt` or `createdAt` timestamp.
+App publishers can add `profileLocalization` records for authoritative localized
+names, descriptions, links, images, and discovery tags.
+
+Publishers SHOULD use a lowercase BCP 47 language tag as the localization record
+rkey (e.g. `fr`, `pt-br`, `zh-hant`) so the rkey acts as a natural uniqueness
+key per locale. Publishers SHOULD publish at most one `profileLocalization`
+record per locale. If duplicate records exist for the same locale, consumers
+SHOULD prefer the one with the most recent `updatedAt` or `createdAt` timestamp.
 
 ## Rich app metadata
 
@@ -50,17 +92,16 @@ directory media. Each item MUST include `alt` text and exactly one of `image`
 (an ATProto blob) or `uri` (a remote URL). Consumers MUST ignore items that
 carry neither or both. `purpose` and `aspectRatio` are optional per item;
 multiple items may share the same `purpose` (e.g. several screenshots or hero
-variants are all valid).
+variants are all valid). If no known image purpose fits, omit `purpose`.
 
-Records may also include `webManifestUri` to point at an HTTPS Web App Manifest.
-Manifests can prefill or augment install behavior, icons, screenshots,
-language, and platform or form-factor metadata without making manifests the only
-way to describe visual assets.
+Web App Manifests can still prefill or augment install behavior, icons,
+screenshots, language, and platform or form-factor metadata, but they are linked
+through `links` rather than modeled as a top-level field.
 
 ## Trust and verification
 
 `profileDid` in an `entry` record is an unverified claim made by whoever
-published the entry — it is not proof that the named DID endorses the listing.
+published the entry -- it is not proof that the named DID endorses the listing.
 Directories SHOULD treat it purely as a hint. Before labeling an entry
 "official" or "verified", directories SHOULD:
 
@@ -70,3 +111,8 @@ Directories SHOULD treat it purely as a hint. Before labeling an entry
    resources, or other trust policies.
 
 Verification is otherwise intentionally out of scope for these records.
+
+## Deferred ideas
+
+License metadata and backend deployment/self-hosting signals are useful follow-up
+ideas, but are intentionally left out of this v1 proposal.

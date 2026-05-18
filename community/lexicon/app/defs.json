@@ -17,8 +17,79 @@
           "maxLength": 100,
           "maxGraphemes": 50,
           "description": "Human-readable label for the URI."
+        },
+        "role": {
+          "type": "ref",
+          "ref": "#linkRole",
+          "description": "Known role of this link, if any."
         }
       }
+    },
+    "linkRole": {
+      "type": "string",
+      "description": "Known role of a link associated with an app.",
+      "knownValues": [
+        "community.lexicon.app.defs#linkRoleWebsite",
+        "community.lexicon.app.defs#linkRoleWebManifest",
+        "community.lexicon.app.defs#linkRolePrivacyPolicy",
+        "community.lexicon.app.defs#linkRoleTermsOfService",
+        "community.lexicon.app.defs#linkRoleSupport",
+        "community.lexicon.app.defs#linkRoleSourceCode",
+        "community.lexicon.app.defs#linkRoleDocs",
+        "community.lexicon.app.defs#linkRoleChangelog",
+        "community.lexicon.app.defs#linkRoleStatus",
+        "community.lexicon.app.defs#linkRoleAppStore",
+        "community.lexicon.app.defs#linkRolePlayStore",
+        "community.lexicon.app.defs#linkRoleFDroid"
+      ]
+    },
+    "linkRoleWebsite": {
+      "type": "token",
+      "description": "Primary website or landing page."
+    },
+    "linkRoleWebManifest": {
+      "type": "token",
+      "description": "Web App Manifest."
+    },
+    "linkRolePrivacyPolicy": {
+      "type": "token",
+      "description": "Privacy policy."
+    },
+    "linkRoleTermsOfService": {
+      "type": "token",
+      "description": "Terms of service."
+    },
+    "linkRoleSupport": {
+      "type": "token",
+      "description": "Support, help, or contact page."
+    },
+    "linkRoleSourceCode": {
+      "type": "token",
+      "description": "Source code repository or source distribution."
+    },
+    "linkRoleDocs": {
+      "type": "token",
+      "description": "Documentation."
+    },
+    "linkRoleChangelog": {
+      "type": "token",
+      "description": "Changelog or release notes."
+    },
+    "linkRoleStatus": {
+      "type": "token",
+      "description": "Service status page."
+    },
+    "linkRoleAppStore": {
+      "type": "token",
+      "description": "Apple App Store listing."
+    },
+    "linkRolePlayStore": {
+      "type": "token",
+      "description": "Google Play Store listing."
+    },
+    "linkRoleFDroid": {
+      "type": "token",
+      "description": "F-Droid listing."
     },
     "image": {
       "type": "object",
@@ -35,10 +106,9 @@
             "community.lexicon.app.defs#purposeBanner",
             "community.lexicon.app.defs#purposeSocialCard",
             "community.lexicon.app.defs#purposeAppStore",
-            "community.lexicon.app.defs#purposeAd",
-            "community.lexicon.app.defs#purposeOther"
+            "community.lexicon.app.defs#purposeAd"
           ],
-          "description": "How directories and stores should use the image."
+          "description": "How directories and stores should use the image. Omit this field when no known purpose fits."
         },
         "image": {
           "type": "blob",
@@ -110,10 +180,6 @@
       "type": "token",
       "description": "A promotional or advertising image."
     },
-    "purposeOther": {
-      "type": "token",
-      "description": "An image whose purpose does not fit any other known value."
-    },
     "status": {
       "type": "string",
       "description": "Current release or maintenance status of an app.",
@@ -144,6 +210,86 @@
     "discontinued": {
       "type": "token",
       "description": "The app is no longer available or supported."
+    },
+    "platform": {
+      "type": "string",
+      "description": "Platform where an app is available.",
+      "knownValues": [
+        "community.lexicon.app.defs#platformWeb",
+        "community.lexicon.app.defs#platformIOS",
+        "community.lexicon.app.defs#platformAndroid",
+        "community.lexicon.app.defs#platformMacOS",
+        "community.lexicon.app.defs#platformWindows",
+        "community.lexicon.app.defs#platformLinux",
+        "community.lexicon.app.defs#platformCLI"
+      ]
+    },
+    "platformWeb": {
+      "type": "token",
+      "description": "Web app or website."
+    },
+    "platformIOS": {
+      "type": "token",
+      "description": "iOS app."
+    },
+    "platformAndroid": {
+      "type": "token",
+      "description": "Android app."
+    },
+    "platformMacOS": {
+      "type": "token",
+      "description": "macOS app."
+    },
+    "platformWindows": {
+      "type": "token",
+      "description": "Windows app."
+    },
+    "platformLinux": {
+      "type": "token",
+      "description": "Linux app."
+    },
+    "platformCLI": {
+      "type": "token",
+      "description": "Command line interface."
+    },
+    "lexiconInterop": {
+      "type": "object",
+      "description": "Self-declared AT Protocol lexicon interoperability signals.",
+      "properties": {
+        "produces": {
+          "type": "array",
+          "description": "Lexicon collections this app creates or publishes records for.",
+          "items": {
+            "type": "string",
+            "format": "nsid"
+          }
+        },
+        "consumes": {
+          "type": "array",
+          "description": "Lexicon collections this app reads, displays, imports, or otherwise consumes.",
+          "items": {
+            "type": "string",
+            "format": "nsid"
+          }
+        }
+      }
+    },
+    "accountIndicator": {
+      "type": "object",
+      "description": "A record whose presence in an account can indicate that the account probably uses this app.",
+      "required": ["collection"],
+      "properties": {
+        "collection": {
+          "type": "string",
+          "format": "nsid",
+          "description": "Record collection to look for in an account repository."
+        },
+        "rkey": {
+          "type": "string",
+          "format": "record-key",
+          "description": "Optional record key to look for within the collection."
+        }
+      }
     }
   }
 }

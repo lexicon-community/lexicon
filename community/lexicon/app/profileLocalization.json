@@ -57,11 +57,6 @@
               "ref": "community.lexicon.app.defs#link"
             }
           },
-          "webManifestUri": {
-            "type": "string",
-            "format": "uri",
-            "description": "HTTPS URI of a localized Web App Manifest for richer install and directory metadata."
-          },
           "createdAt": {
             "type": "string",
             "format": "datetime",
