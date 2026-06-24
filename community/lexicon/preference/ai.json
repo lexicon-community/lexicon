@@ -70,7 +70,8 @@
     },
     "globalScope": {
       "type": "object",
-      "description": "Account-wide default. The record at key 'self' should carry this scope."
+      "description": "Account-wide default. The record at key 'self' should carry this scope.",
+      "properties": {}
     },
     "entityScope": {
       "type": "object",

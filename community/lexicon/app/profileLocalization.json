@@ -1,0 +1,74 @@
+{
+  "lexicon": 1,
+  "id": "community.lexicon.app.profileLocalization",
+  "description": "Localized metadata for a community.lexicon.app.profile record.",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A locale-specific override for an app profile. This record should be published by the same DID as the canonical app profile.",
+      "key": "any",
+      "record": {
+        "type": "object",
+        "required": ["locale", "createdAt"],
+        "properties": {
+          "locale": {
+            "type": "string",
+            "format": "language",
+            "description": "BCP 47 language tag for this localized metadata."
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "maxGraphemes": 100,
+            "description": "Localized display name of the app."
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 3000,
+            "maxGraphemes": 300,
+            "description": "Localized description of what the app does."
+          },
+          "images": {
+            "type": "array",
+            "maxLength": 24,
+            "description": "Localized visual assets for directories and stores, such as icons, hero images, screenshots, banners, and social cards.",
+            "items": {
+              "type": "ref",
+              "ref": "community.lexicon.app.defs#image"
+            }
+          },
+          "tags": {
+            "type": "array",
+            "maxLength": 10,
+            "items": {
+              "type": "string",
+              "maxLength": 64,
+              "maxGraphemes": 32
+            },
+            "description": "Localized discovery tags for filtering and search."
+          },
+          "links": {
+            "type": "array",
+            "minLength": 1,
+            "maxLength": 12,
+            "description": "Localized destinations for the app. The first link should be the primary destination for this locale.",
+            "items": {
+              "type": "ref",
+              "ref": "community.lexicon.app.defs#link"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Client-declared timestamp when this localization was created."
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Client-declared timestamp when this localization was last updated."
+          }
+        }
+      }
+    }
+  }
+}
