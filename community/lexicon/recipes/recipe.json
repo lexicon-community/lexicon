@@ -1,0 +1,277 @@
+{
+  "lexicon": 1,
+  "id": "community.lexicon.recipes.recipe",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "Record for a culinary recipe.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": [
+          "name",
+          "text",
+          "ingredients",
+          "instructions",
+          "createdAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "The name of the recipe"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 1000,
+            "description": "A description of the recipe"
+          },
+          "attribution": {
+            "type": "union",
+            "refs": [
+              "#originalAttribution",
+              "#personAttribution",
+              "#productAttribution",
+              "#publicationAttribution",
+              "#showAttribution",
+              "#websiteAttribution"
+            ]
+          },
+          "ingredients": {
+            "type": "array",
+            "description": "List of ingredients and their measurements",
+            "items": {
+              "type": "string",
+              "maxLength": 500
+            }
+          },
+          "instructions": {
+            "type": "array",
+            "description": "Step by step cooking instructions",
+            "items": {
+              "type": "string",
+              "maxLength": 1000
+            }
+          },
+          "embed": {
+            "type": "ref",
+            "ref": "#imagesEmbed"
+          },
+          "prepTime": {
+            "type": "string",
+            "format": "duration",
+            "description": "Time required for preparation"
+          },
+          "cookTime": {
+            "type": "string",
+            "format": "duration",
+            "description": "Time required for cooking"
+          },
+          "totalTime": {
+            "type": "string",
+            "format": "duration",
+            "description": "Total time required"
+          },
+          "recipeYield": {
+            "type": "string",
+            "description": "Number of servings or yield"
+          },
+          "recipeCategory": {
+            "type": "string",
+            "description": "Category of recipe (e.g., appetizer, main course)",
+            "knownValues": [
+              "community.lexicon.recipes.defs#recipeCategory"
+            ]
+          },
+          "recipeCuisine": {
+            "type": "string",
+            "description": "Cuisine type (e.g., Italian, Mexican)",
+            "knownValues": [
+              "community.lexicon.recipes.defs#recipeCuisine"
+            ]
+          },
+          "cookingMethod": {
+            "type": "string",
+            "description": "Method of cooking (e.g., baking, grilling)",
+            "knownValues": [
+              "community.lexicon.recipes.defs#cookingMethod"
+            ]
+          },
+          "nutrition": {
+            "type": "object",
+            "description": "Nutritional information",
+            "properties": {
+              "calories": { "type": "integer" },
+              "fatContent": { "type": "number" },
+              "proteinContent": { "type": "number" },
+              "carbohydrateContent": { "type": "number" }
+            }
+          },
+          "suitableForDiet": {
+            "type": "array",
+            "description": "Dietary restrictions this recipe is suitable for",
+            "items": {
+              "type": "string",
+              "knownValues": [
+                "community.lexicon.recipes.defs#diet"
+              ]
+            }
+          },
+          "keywords": {
+            "type": "array",
+            "description": "Tags describing the recipe",
+            "items": {
+              "type": "string",
+              "maxLength": 64
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Timestamp when this recipe was created"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Timestamp when this recipe was last updated"
+          }
+        }
+      }
+    },
+    "imagesEmbed": {
+      "type": "object",
+      "required": ["images"],
+      "properties": {
+        "images": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "#image" },
+          "maxLength": 4
+        }
+      }
+    },
+    "image": {
+      "type": "object",
+      "required": ["image", "alt"],
+      "properties": {
+        "image": {
+          "type": "blob",
+          "accept": ["image/*"],
+          "maxSize": 1000000
+        },
+        "alt": {
+          "type": "string",
+          "description": "Alt text description of the image, for accessibility."
+        },
+        "aspectRatio": {
+          "type": "ref",
+          "ref": "app.bsky.embed.defs#aspectRatio"
+        }
+      }
+    },
+    "view": {
+      "type": "object",
+      "required": ["images"],
+      "properties": {
+        "images": {
+          "type": "array",
+          "items": { "type": "ref", "ref": "#viewImage" },
+          "maxLength": 4
+        }
+      }
+    },
+    "viewImage": {
+      "type": "object",
+      "required": ["thumb", "fullsize", "alt"],
+      "properties": {
+        "thumb": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for thumbnail version of the image."
+        },
+        "fullsize": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for full size version of the image."
+        },
+        "alt": {
+          "type": "string",
+          "description": "Alt text description of the image, for accessibility."
+        },
+        "aspectRatio": {
+          "type": "ref",
+          "ref": "app.bsky.embed.defs#aspectRatio"
+        }
+      }
+    },
+    "originalAttribution": {
+      "type": "object",
+      "required": ["type", "license"],
+      "properties": {
+        "type": { "type": "ref", "ref": "community.lexicon.recipes.defs#attributionType", "const": "original" },
+        "license": { "type": "ref", "ref": "community.lexicon.recipes.defs#license" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "personAttribution": {
+      "type": "object",
+      "required": ["type", "name"],
+      "properties": {
+        "type": { "type": "ref", "ref": "community.lexicon.recipes.defs#attributionType", "const": "person" },
+        "name": { "type": "string", "maxLength": 255 },
+        "url": { "type": "string", "format": "uri" },
+        "notes": { "type": "string", "maxLength": 1000 }
+      }
+    },
+    "publicationAttribution": {
+      "type": "object",
+      "required": ["type", "publicationType", "title", "author"],
+      "properties": {
+        "type": { "type": "ref", "ref": "community.lexicon.recipes.defs#attributionType", "const": "publication" },
+        "publicationType": { "type": "ref", "ref": "community.lexicon.recipes.defs#publicationType" },
+        "title": { "type": "string", "maxLength": 255 },
+        "author": { "type": "string", "maxLength": 255 },
+        "publisher": { "type": "string", "maxLength": 255 },
+        "isbn": { "type": "string", "maxLength": 13 },
+        "page": { "type": "integer" },
+        "url": { "type": "string", "format": "uri" },
+        "notes": { "type": "string", "maxLength": 1000 }
+      }
+    },
+    "websiteAttribution": {
+      "type": "object",
+      "required": ["type", "name", "url"],
+      "properties": {
+        "type": { "type": "ref", "ref": "community.lexicon.recipes.defs#attributionType", "const": "website" },
+        "name": { "type": "string", "maxLength": 255 },
+        "url": { "type": "string", "format": "uri" },
+        "notes": { "type": "string", "maxLength": 1000 }
+      }
+    },
+    "showAttribution": {
+      "type": "object",
+      "required": ["type", "title", "network"],
+      "properties": {
+        "type": { "type": "ref", "ref": "community.lexicon.recipes.defs#attributionType", "const": "show" },
+        "title": { "type": "string", "maxLength": 255 },
+        "episode": { "type": "string", "maxLength": 255 },
+        "network": { "type": "string", "maxLength": 255 },
+        "airDate": { "type": "string", "format": "date" },
+        "url": { "type": "string", "format": "uri" },
+        "notes": { "type": "string", "maxLength": 1000 }
+      }
+    },
+    "productAttribution": {
+      "type": "object",
+      "required": ["type", "brand", "name"],
+      "properties": {
+        "type": { "type": "ref", "ref": "community.lexicon.recipes.defs#attributionType", "const": "product" },
+        "brand": { "type": "string", "maxLength": 255 },
+        "name": { "type": "string", "maxLength": 255 },
+        "upc": { "type": "string", "maxLength": 13 },
+        "url": { "type": "string", "format": "uri" },
+        "notes": { "type": "string", "maxLength": 1000 }
+      }
+    }
+  }
+}
